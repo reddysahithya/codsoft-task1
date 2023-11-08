@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class Number_Games {
+    public static void main(String[] args) {
+        Scanner Sc = new Scanner(System.in);
+        int possibilites = 15;
+        int last = 0;
+        boolean again_play = true;
+        System.out.println("Welcome to the game");
+        System.out.println("you have " + possibilites + " chances to win the game");
+        while (again_play) {
+            int randomlyN = getrandomlynumber(1, 100);
+            boolean expected = false;
+            for (int i = 0; i < possibilites; i++) {
+                System.out.println("possibilites" + (i + 1) + " Enter the number you want to evaluate: ");
+                int player = Sc.nextInt();
+                if (player == randomlyN) {
+                    expected = true;
+                    last += 1;
+                    System.out.println("You succesfully won the game:");
+                    break;
+                } else if (player > randomlyN) {
+                    System.out.println("highest");
+                } else {
+                    System.out.println("lowest");
+                }
+            }
+            if (expected = false) {
+                System.out.println("oh no your possibilites are completed .The number is " + randomlyN);
+            }
+            System.out.println("you want to continue the game(yes/no)");
+            String begin = Sc.next();
+            again_play = play.equalsIgnoreCase("yes");
+        }
+        System.out.println("hope you enjoyed it");
+        System.out.println("your score" + last);
+    }
+    public static int getrandomlynumber(int mini, int maxi) {
+        return (int) (Math.random() * (maxi - mini + 1) + mini);
+    }
+}
